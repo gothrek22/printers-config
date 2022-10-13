@@ -1,18 +1,23 @@
-FROM centos:8
+FROM fedora:36
+
+RUN dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && \
+  dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 RUN dnf install -yq \
-  curl \
-  wget \
-  bash \
-  python3-devel \
-  ffmpeg \
-  automake \
   autoconf \
+  automake \
+  avrdude \
+  bash \
   cmake \
   curl \
+  ffmpeg \
   fontconfig \
   gcc-c++ \
   git \
-  libjpeg-devel
+  libjpeg-devel \
+  procps \
+  python3-devel \
+  wget
 
 WORKDIR /octoprint
 
